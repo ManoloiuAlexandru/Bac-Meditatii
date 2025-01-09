@@ -1,0 +1,114 @@
+1.b) 15
+list_of_letters = ["a", "b", "c", "d", "e"]
+list_of_options = []
+vows = "ae"
+for a in list_of_letters:
+    for b in list_of_letters:
+        for c in list_of_letters:
+            for d in list_of_letters:
+                my_string = a + b + c + d
+                list_of_options.append(my_string)
+            for e in list_of_letters:
+                my_string = a + b + c + e
+                list_of_options.append(my_string)
+
+for elem in list_of_options[:]:
+    if list_of_options.count(elem) > 1:
+        list_of_options.remove(elem)
+
+for elem in list_of_options[:]:
+    for letters in range(len(elem) - 1):
+        if elem[letters] in vows and elem[letters + 1] in vows:
+            list_of_options.remove(elem)
+            break
+
+for elem in list_of_options:
+    if elem.startswith("b") and elem.endswith("e"):
+        print(elem)
+print(list_of_options)
+2.
+1
+2
+3
+4
+5
+
+3.
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	int n, nrr = 0;
+	do {
+		cin >> n;
+
+	} while (n > 999 || n < 0);
+	ifstream fileName("bac.txt");
+	string line;
+	while (getline(fileName, line)) {
+		if (stoi(line) % n == 0) {
+			nrr++;
+			cout << line<<" ";
+		}
+	}
+	if (nrr == 0) {
+		cout << "NU EXISTA";
+	}
+}
+
+4.a)
+int sub(int v[101], int n, int a) {
+	int nrr = 0;
+	for (int i = 0;i < n;i++)
+	{
+		if (v[i] < a) {
+			nrr++;
+		}
+	}
+	return nrr;
+}
+
+b)
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int sub(int v[101], int n, int a) {
+	int nrr = 0;
+	for (int i = 0;i < n;i++)
+	{
+		if (v[i] < a) {
+			nrr++;
+		}
+	}
+	return nrr;
+}
+int main()
+{
+	int v[101], n, sol[101] = { 0 }, ok = 1;
+	cin >> n;
+	for (int i = 0;i < n;i++)
+	{
+		cin >> v[i];
+	}
+	for (int i = 0;i < n;i++)
+	{
+		sol[i] = sub(v, n, v[i]);
+	}
+	for (int i = 0;i < n - 1;i++)
+	{
+		for (int j = i+1;j < n;j++)
+		{
+			if (sol[i] == sol[j]) {
+				cout << "NU";
+				ok = 0;
+				break;
+			}
+		}
+	}
+	if (ok == 1) cout << "DA";
+}
