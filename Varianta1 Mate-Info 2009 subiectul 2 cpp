@@ -3,15 +3,21 @@
 3. C.x = (A.x + B.x) / 2;
    C.y = (A.y + B.y) / 2;
 4. Frunze:3,1,2,8 inaltime maxima:3
-5. #include <iostream>
+5. 
+#include <iostream>
 #include<string>
 using namespace std;
 
 int main()
 {
 	int n, m;
-	cin >> n;
-	cin >> m;
+	do {
+		cin >> n;
+	} while (n<2 || n>10);
+	do {
+		cin >> m;
+
+	} while (m < 2 || m>10);
 	int matr[11][11];
 	for (int i = 1;i <= n;i++) {
 		for (int j = 1;j <= m;j++)
@@ -29,3 +35,4 @@ int main()
 		cout << endl;
 	}
 }
+
